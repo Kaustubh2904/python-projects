@@ -31,25 +31,17 @@ class handDetector():
 
 
     def findPos(self, img, handNum = 0, draw = True):
-         
-         lmList =[]
+        lmList = []
 
-
-         if self.results.multi_hand_landmarks:
-             myHAND = self.results.multi_hand_landmarks[handNum]
-             for id, lm in enumerate(myHAND.landmark):
-                # print(id,lm) 
-                h,w,c = img.shape   
-                cx, cy = int(lm.x*w), int(lm.y*h)
-                # print(id, cx, cy)
+        if self.results.multi_hand_landmarks:
+            myHand = self.results.multi_hand_landmarks[handNum]
+            for id, lm in enumerate(myHand.landmark):
+                h,w,c = img.shape
+                cx ,cy = int(lm.x*w), int(lm.y*h)
                 lmList.append([id,cx,cy])
-                #if id == 4
                 if draw:
-                    cv2.circle(img,(cx,cy), 15, (255,0,255), cv2.FILLED)
-
-                return lmList 
-            
-          
+                    cv2.circle(img,(cx,cy), 10, (255,0,255), cv2.FILLED)
+        return lmList
 
 
 def main():
@@ -62,8 +54,6 @@ def main():
         success, img = cap.read()
         img = detector.findHands(img)
         lmList =  detector.findPos(img)
-
-
         if len(lmList) != 0:
             print(lmList[4])
 
@@ -73,8 +63,6 @@ def main():
 
         cv2.putText(img, str(int(fps)), (10,70), cv2.FONT_HERSHEY_COMPLEX, 3, (255, 0,255), 3) #this displays fps @ img as str which has int values at position 10,70 aat some font with scale 3 color purple and thickness 3 
 
-    
-    
         cv2.imshow("webcam", img)
         
         key = cv2.waitKey(1)
