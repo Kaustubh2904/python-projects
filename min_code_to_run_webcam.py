@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp 
-import time 
+import time #this is not used here 
 # Create a VideoCapture object to access the webcam (0 represents the default camera)
 cap = cv2.VideoCapture(0)
 

@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp 
-import time #this is for fps and time interval things not particularly used in this code 
+import time  
 
 class handDetector():
 
