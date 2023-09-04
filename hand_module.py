@@ -4,7 +4,7 @@ import time #this is for fps and time interval things not particularly used in t
 
 class handDetector():
 
-    def __init__(self, mode = False, MaxHands = 3, complexity=1, detectioncon= 0.5 ,trackcon=0.5):
+    def __init__(self, mode = False, MaxHands = 3, complexity=1, detectioncon= 0.5 ,trackcon=0.5):  
         self.mode = mode
         self.MaxHands = MaxHands
         self.detectioncon= detectioncon
