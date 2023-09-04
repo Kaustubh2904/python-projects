@@ -26,6 +26,7 @@ while True :
                 h,w,c = img.shape   #this is an object of img class c is for channel
                 cx, cy = int(lm.x*w), int(lm.y*h)  #here we are getiing pixel values of the lm.x and lm.y 
                 print(id, cx, cy)
+                
             mpDraw.draw_landmarks(img, handlmks,mpHands.HAND_CONNECTIONS)
 
     cTime = time.time()
