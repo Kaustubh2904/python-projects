@@ -2,22 +2,22 @@ import cv2
 import mediapipe as mp 
 import time  
 
-class handDetector():
+class handDetector():  #class is created 
 
-    def __init__(self, mode = False, MaxHands = 3, complexity=1, detectioncon= 0.5 ,trackcon=0.5):  
-        self.mode = mode
-        self.MaxHands = MaxHands
-        self.detectioncon= detectioncon
+    def __init__(self, mode = False, MaxHands = 3, complexity=1, detectioncon= 0.5 ,trackcon=0.5):  #here class is defined with methods and self is used for refering to the instance of class when used by objects 
+        self.mode = mode                             #all of these are objects of the class
+        self.MaxHands = MaxHands                        #all of these are objects of the class
+        self.detectioncon= detectioncon         #all of these are objects of the class
         self.trackcon= trackcon
         self.complexity = complexity 
 
 
         self.mpHands = mp.solutions.hands
-        self.hands = self.mpHands.Hands(self.mode, self.MaxHands, self.complexity, self.detectioncon,self.trackcon)
+        self.hands = self.mpHands.Hands(self.mode, self.MaxHands, self.complexity, self.detectioncon,self.trackcon)  # these are instances of mediapipe used in class 
         self.mpDraw = mp.solutions.drawing_utils 
 
 
-    def findHands(self, img, draw= True):
+    def findHands(self, img, draw= True):                 # this find the hands and connect the landmarks 
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(imgRGB)
 
@@ -27,10 +27,10 @@ class handDetector():
                      self.mpDraw.draw_landmarks(img, handlmks,self.mpHands.HAND_CONNECTIONS)
                     
 
-        return img 
+        return img # return img to the main funcion 
 
 
-    def findPos(self, img, handNum = 0, draw = True):
+    def findPos(self, img, handNum = 0, draw = True):   # this finds the position and draws circle around the landmarks 
         lmList = []
 
         if self.results.multi_hand_landmarks:
@@ -41,7 +41,7 @@ class handDetector():
                 lmList.append([id,cx,cy])
                 if draw:
                     cv2.circle(img,(cx,cy), 10, (255,0,255), cv2.FILLED)
-        return lmList
+        return lmList    #return the landmarks to the main 
 
 
 def main():
@@ -55,7 +55,7 @@ def main():
         img = detector.findHands(img)
         lmList =  detector.findPos(img)
         if len(lmList) != 0:
-            print(lmList[4])
+            print(lmList[4])  # chosse to take location of specific landmarks 
 
         cTime = time.time()
         fps = (1/(cTime-pTime))   
