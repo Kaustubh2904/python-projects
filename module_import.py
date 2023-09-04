@@ -13,8 +13,8 @@ detector = hm.handDetector()
 
 while True :
     success, img = cap.read()
-    img = detector.findHands(img)
-    lmList =  detector.findPos(img)
+    img = detector.findHands(img)  # img = detector.findHands(img, draw = False)   lines bnd 
+    lmList =  detector.findPos(img,)  #lmList =  detector.findPos(img, Draw = False )    circle bnd 
     if len(lmList) != 0:
         print(lmList[4])
 
