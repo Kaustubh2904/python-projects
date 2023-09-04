@@ -9,8 +9,8 @@ hands = mpHands.Hands()
 mpDraw = mp.solutions.drawing_utils 
 
 
-pTime = 0 #previous time 
-cTime = 0 #current time 
+pTime = 0 
+cTime = 0 
 
 while True :
    
@@ -21,11 +21,16 @@ while True :
 
     if results.multi_hand_landmarks:
         for handlmks in results.multi_hand_landmarks:
+            for id, lm in enumerate(handlmks.landmark):
+                # print(id,lm)      //this gives decimal vlaues 
+                h,w,c = img.shape   #this is an object of img class c is for channel
+                cx, cy = int(lm.x*w), int(lm.y*h)  #here we are getiing pixel values of the lm.x and lm.y 
+                print(id, cx, cy)
             mpDraw.draw_landmarks(img, handlmks,mpHands.HAND_CONNECTIONS)
 
-    cTime = time.time() #this gets time 
-    fps = (1/(cTime-pTime))  #this calculates fps 
-    pTime = cTime #this updates fps 
+    cTime = time.time()
+    fps = (1/(cTime-pTime))   
+    pTime = cTime 
 
     cv2.putText(img, str(int(fps)), (10,70), cv2.FONT_HERSHEY_COMPLEX, 3, (255, 0,255), 3) #this displays fps @ img as str which has int values at position 10,70 aat some font with scale 3 color purple and thickness 3 
 
