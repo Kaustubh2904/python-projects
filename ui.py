@@ -17,7 +17,7 @@ def update_volume():
     current_volume = get_system_volume()
     volume_label.config(text=f"Volume: {current_volume}%")
     volume_bar["value"] = current_volume
-    window.after(100, update_volume) 
+    window.after(200, update_volume) 
 
 # Create the main window
 window = tk.Tk()
