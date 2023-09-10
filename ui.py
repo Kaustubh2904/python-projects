@@ -1,4 +1,5 @@
 import tkinter as tk
+import comtypes
 from tkinter import ttk
 from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
