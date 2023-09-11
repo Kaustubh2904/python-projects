@@ -54,5 +54,5 @@ while True:
     cv2.putText(img, str(int(fps)), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
-    if key == ord('q'):
+    if key == ord('r'):
         break
