@@ -26,7 +26,8 @@ while True:
 
     if len(lmlist)!=0:
         x1, y1 = lmlist[8][1:]
-        x2, y2 = lmlist[12aqr][1:]
+        x2, y2 = lmlist[12][1:]
+
 
         fingers = detector.fingersUp()      # Checking if fingers are upwards
         cv2.rectangle(img, (frameR, frameR), (width - frameR, height - frameR), (255, 0, 255), 2)   # Creating boundary box
